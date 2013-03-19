@@ -12,16 +12,16 @@
                 return false;
             });
         };
-        
-        $.getJSON('all.json', function (todos) {
+
+        $.getJSON('javascripts/lib/all.json', function (todos) {
             todos.forEach(function (todo) {
-                $('#all').append('<div class="todoItem">' + todo.description + '</div>');
-                todo.categories.forEach(function (category) {
-                    $('#all').append('<p class="categories">' + category + '</p>');
+                $('#all').append('<div class="todoItems">' + todo.description + '<p class="categories">' + todo.categories +'</p></div>');
+                todo.categories.forEach(function (category) {     
+                    $('#' + category).append('<p class="descriptions">' + todo.description + '</p>');
                 });
             });
         });
-        
+
         clickHandler($('.tabs .tab'));
     };
     $(document).ready(main);
