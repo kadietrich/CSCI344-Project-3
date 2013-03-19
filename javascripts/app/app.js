@@ -12,17 +12,22 @@
                 return false;
             });
         };
-
         $.getJSON('javascripts/lib/all.json', function (todos) {
             todos.forEach(function (todo) {
-                $('#all').append('<div class="todoItems">' + todo.description + '<p class="categories">' + todo.categories +'</p></div>');
+                $('#all').append('<div class="todoItems"><button class="removeButton">X</button>' + todo.description + '<p class="categories">' + todo.categories +'</p></div>');
                 todo.categories.forEach(function (category) {     
-                    $('#' + category).append('<p class="descriptions">' + todo.description + '</p>');
+                    $('#' + category).append('<div class="todoItems"><button class="removeButton">X</button>' + todo.description + '</div>');
                 });
             });
-        });
-
+        }); 
+        /*var removeHandler = function (button) {
+            button.click(function () {
+                var target = $(this).parent();
+                target.remove();
+            })
+        }*/
         clickHandler($('.tabs .tab'));
+        //removeHandler($('.removeButton'));
     };
     $(document).ready(main);
     window.main = main;
